@@ -1,7 +1,6 @@
 package studentsrecordmanager
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/gocarina/gocsv"
@@ -18,9 +17,6 @@ func LoadSchool(filename string) (*School, error) {
 
 	if err := gocsv.UnmarshalFile(file, &school.Students); err != nil {
 		return &School{}, err
-	}
-	for _, student := range school.Students {
-		fmt.Println("Hello, ", student.Name)
 	}
 	return &school, nil
 }
