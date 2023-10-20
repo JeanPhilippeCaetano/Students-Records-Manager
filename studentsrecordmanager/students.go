@@ -15,18 +15,10 @@ type School struct {
 	Students []*Student
 }
 
-func GetAllGradesOfSchool(school *School) []float64 {
-	var allGrades []float64
-	for _, student := range school.Students {
-		allGrades = append(allGrades, student.Grade)
-	}
-	return allGrades
-}
-
 func AverageGradeOfSchool(school *School) float64 {
 	total := 0.0
-	for _, v := range school.Students {
-		total += v.Grade
+	for _, student := range school.Students {
+		total += student.Grade
 	}
 	return total / float64(len(school.Students))
 }

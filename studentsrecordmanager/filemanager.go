@@ -21,8 +21,8 @@ func LoadSchool(filename string) (*School, error) {
 	return &school, nil
 }
 
-func SaveSchool(school *School) error {
-	file, err := os.Create("currentstudents.csv")
+func SaveSchool(filename string, school *School) error {
+	file, err := os.Create(filename)
 	if err != nil {
 		return err
 	}

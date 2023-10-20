@@ -2,16 +2,20 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"studentsrecordmanager/studentsrecordmanager"
 )
 
 func main() {
-	school, _ := studentsrecordmanager.LoadSchool("students.csv")
+	school, err := studentsrecordmanager.LoadSchool("students.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Println(studentsrecordmanager.AverageGradeOfSchool(school))
 	fmt.Println(studentsrecordmanager.BestStudentOfSchool(school.Students))
-	fmt.Println(studentsrecordmanager.SortStudentsByDescendingGrade(school.Students))
+	studentsrecordmanager.SortStudentsByDescendingGrade(school.Students)
 	for _, student := range school.Students {
 		fmt.Println(student)
 	}
-	studentsrecordmanager.SaveSchool(school)
+	studentsrecordmanager.SaveSchool("currentstudents.csv", school)
 }
